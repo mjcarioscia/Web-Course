@@ -29,4 +29,29 @@
     color:rgb(96, 96, 96);
     width: 280px;
     line-height: 22px;
+    margin-bottom: 100px;
+  }
+
+  .apple-text { 
+    margin-bottom: 50px;
+    font-size: 14px;
+    background-color: rgb(227, 65, 64);
+    color: white;
+    text-align: center;
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+
+  .apple-span:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .span-ex {
+    color: red;
+    margin-left: 12px; 
+  }
+
+  .span-ex:hover {
+    text-decoration: underline;    
   }
