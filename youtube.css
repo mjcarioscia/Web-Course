@@ -6,7 +6,14 @@ p {
 
 body {
   margin: 0;
+  /* Padding to body prevents the header from overlapping the video previews */
+  padding-top: 80px;
+  padding-left: 96px;
+  padding-right: 24px;
+  background-color: rgb(248, 248, 248);
 }
+
+/* Video Info */
 
 .thumbnail {
   width: 100%
@@ -17,16 +24,17 @@ body {
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .profile-picture {
-  width: 40px;
+  width: 36px;
   border-radius: 50px;
 }
 
 .thumbnail-row {
-  margin-bottom: 12px;
+  margin-bottom: 8px;
+  position: relative;
 }
 
 .video-author,
@@ -58,6 +66,18 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  /* Header fixed position*/
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(226, 226, 226);
+  
+  /*z-idex used for layering, default is 0, the higher the z means it will be on the top layer*/
+  z-index: 100;
 }
 
 .left-section {
@@ -110,12 +130,46 @@ body {
   border-style: solid;
   border-color: rgb(192, 192, 192);
   margin-left: -1px;
-  margin-right: 10px;
+  margin-right: 10px; 
+}
+
+.search-button,
+.voice-search-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.search-button .tooltip,
+.voice-search-button .tooltip {
+  position: absolute;
+  background-color: grey;
+  color: white;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
+  border-radius: 2px;
+  font-size: 12px;
+  font-family: Roboto, Arial;
+  bottom: -30px;
+  opacity: 0;
+  transition: opacity 0.15s;
+  
+  /* prevents the search tooltip from showing when the search text area is hovered over, only wqnt the search tooltip showing when the search button is hovered over */
+  pointer-events: none;
+/* Stops text wrapping in tooltips*/
+  white-space: nowrap;
+}
+
+.search-button:hover .tooltip,
+.voice-search-button:hover .tooltip {
+  opacity: 1;
 }
 
 .search-icon {
   height: 25px;
-  margin-top: 4px;
 }
 
 .voice-search-button {
@@ -128,7 +182,6 @@ body {
 
 .voice-search-icon {
   height: 24px;
-  margin-top: 4px;
 }
 
 .right-section {
@@ -152,7 +205,83 @@ body {
   height: 24px;
 }
 
+.notifications-icon-container {
+  position: relative;
+}
+
+.notifications-count {
+  position: absolute;
+  top: -2px;
+  right: -5px;
+  background-color: red;
+  color: white;
+  font-family: Roboto, Arial;
+  font-size: 11px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  border-radius: 10px;
+}
+
 .current-user-picture {
   height: 32px;
   border-radius: 16px;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  top: 55px;
+  background-color: white;
+  width: 72px;
+  z-index: 200;
+  padding-top: 5px;
+}
+
+.sidebar-link {
+  height: 74px;
+  /* Used flexbox to center icons within div */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.sidebar-link:hover {
+  background-color: rgb(240, 240, 240);
+}
+
+/* CSS selector combination: targetting all images (img) within (sidebarlink) */
+.sidebar-link img {
+  height: 24px;
+  margin-bottom: 4px;
+}
+
+/* Targetting all divs within sidebar-link */
+.sidebar-link div {
+  font-family: Roboto, Arial;
+  font-size: 10px;
+}
+
+/* Position absolute inside of a position relative (.thumbnail-row) */
+
+.video-time {
+  background-color: black;
+  color: white;
+  position: absolute;
+  bottom: 8px;
+  right: 5px;
+  font-family: Roboto, Arial;
+  font-size: 12px;
+  font-weight: 500;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-radius: 2px;
+
 }
